@@ -53,9 +53,9 @@ class _Tela04State extends State<Tela04> {
       appBar: AppBar(
         title: Text(
           'Conversor de Moedas',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.amber[700],
+        backgroundColor: Colors.black, // Cor do AppBar
       ),
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
@@ -66,7 +66,7 @@ class _Tela04State extends State<Tela04> {
             Icon(
               Icons.attach_money,
               size: 60,
-              color: Colors.greenAccent,
+              color: Colors.grey[400], // Ícone em cinza
             ),
             SizedBox(height: 20),
             TextField(
@@ -75,11 +75,11 @@ class _Tela04State extends State<Tela04> {
                 labelText: _isRealToDollar ? 'Valor em Reais (BRL)' : 'Valor em Dólares (USD)',
                 border: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber, width: 2.0),
+                  borderSide: BorderSide(color: Colors.grey[600]!, width: 2.0), // Borda em cinza
                 ),
-                labelStyle: TextStyle(color: Colors.amber[700]),
+                labelStyle: TextStyle(color: Colors.grey[400]), // Cor da label
               ),
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white), // Texto branco
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               enabled: _isRealToDollar,
             ),
@@ -90,11 +90,11 @@ class _Tela04State extends State<Tela04> {
                 labelText: _isRealToDollar ? 'Valor em Dólares (USD)' : 'Valor em Reais (BRL)',
                 border: OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber, width: 2.0),
+                  borderSide: BorderSide(color: Colors.grey[600]!, width: 2.0), // Borda em cinza
                 ),
-                labelStyle: TextStyle(color: Colors.amber[700]),
+                labelStyle: TextStyle(color: Colors.grey[400]), // Cor da label
               ),
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.white), // Texto branco
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               enabled: !_isRealToDollar,
             ),
@@ -105,10 +105,10 @@ class _Tela04State extends State<Tela04> {
                 ElevatedButton(
                   onPressed: _invertConversion,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent, // Atualizado
-                    foregroundColor: Colors.black, // Atualizado
+                    backgroundColor: Colors.grey[700], // Cor do botão
+                    foregroundColor: Colors.white, // Texto branco
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(0), // Botões quadrados
                     ),
                   ),
                   child: Text('Inverter Conversão'),
@@ -116,10 +116,10 @@ class _Tela04State extends State<Tela04> {
                 ElevatedButton(
                   onPressed: _convertCurrency,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent, // Atualizado
-                    foregroundColor: Colors.black, // Atualizado
+                    backgroundColor: Colors.grey[700], // Cor do botão
+                    foregroundColor: Colors.white, // Texto branco
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(0), // Botões quadrados
                     ),
                   ),
                   child: Text('Converter Moeda'),
@@ -135,10 +135,10 @@ class _Tela04State extends State<Tela04> {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber[700], // Atualizado
-                foregroundColor: Colors.black, // Atualizado
+                backgroundColor: Colors.grey[700], // Cor do botão
+                foregroundColor: Colors.white, // Texto branco
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(0), // Botões quadrados
                 ),
               ),
               child: Text('Ir para a Quinta Tela'),

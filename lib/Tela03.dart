@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Tela04.dart';
+import 'dart:math'; // Para gerar palavras aleatórias
 
 class Tela03 extends StatefulWidget {
   @override
@@ -7,17 +8,15 @@ class Tela03 extends StatefulWidget {
 }
 
 class _Tela03State extends State<Tela03> {
-  int _counter = 0;
+  final List<String> _palavrasDaSorte = [
+    'Sucesso', 'Felicidade', 'Fortuna', 'Amor', 'Saúde', 'Sabedoria', 'Paz', 'Riqueza', 'Harmonia', 'Gratidão'
+  ];
+  String _palavraAtual = 'Clique para a sorte!';
 
-  void _incrementCounter() {
+  void _gerarPalavra() {
+    final random = Random();
     setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 0) _counter--;
+      _palavraAtual = _palavrasDaSorte[random.nextInt(_palavrasDaSorte.length)];
     });
   }
 
@@ -26,20 +25,20 @@ class _Tela03State extends State<Tela03> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Tela 03',
+          'Palavras da Sorte',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 22,
           ),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.black, // Cor de fundo do AppBar
         elevation: 0,
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.deepPurple, Colors.purpleAccent],
+            colors: [Colors.black87, Colors.grey[800]!], // Gradiente de fundo em tons de preto e cinza
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -49,46 +48,42 @@ class _Tela03State extends State<Tela03> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Contador:',
+                'Palavra da Sorte:',
                 style: TextStyle(
                   fontSize: 28,
-                  color: Colors.white,
+                  color: Colors.grey[300], // Cor do texto
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: 10),
               Text(
-                '$_counter',
+                _palavraAtual,
                 style: TextStyle(
-                  fontSize: 80,
+                  fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Colors.amberAccent,
+                  color: Colors.amberAccent, // Destaque para a palavra
                 ),
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: _decrementCounter,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent, // Corrigido
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(20),
-                    ),
-                    child: Icon(Icons.remove, color: Colors.white, size: 30),
+              ElevatedButton(
+                onPressed: _gerarPalavra,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent, // Cor do botão
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0), // Botões quadrados
                   ),
-                  SizedBox(width: 20),
-                  ElevatedButton(
-                    onPressed: _incrementCounter,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.greenAccent, // Corrigido
-                      shape: CircleBorder(),
-                      padding: EdgeInsets.all(20),
-                    ),
-                    child: Icon(Icons.add, color: Colors.white, size: 30),
+                  elevation: 5,
+                ),
+                child: Text(
+                  'Gerar Palavra da Sorte',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white, // Cor do texto do botão
                   ),
-                ],
+                ),
               ),
               SizedBox(height: 40),
               ElevatedButton(
@@ -99,18 +94,19 @@ class _Tela03State extends State<Tela03> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent, // Corrigido
-                  foregroundColor: Colors.white, // Corrigido
+                  backgroundColor: Colors.grey[700], // Cor do botão de navegação
                   padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(0), // Botões quadrados
                   ),
+                  elevation: 5,
                 ),
                 child: Text(
                   'Ir para a Quarta Tela',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
+                    color: Colors.white, // Cor do texto do botão
                   ),
                 ),
               ),
